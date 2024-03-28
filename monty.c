@@ -3,7 +3,7 @@
 void parse_file(FILE *stream)
 {
 	char *line;
-	int line_count, len = 20;
+	unsigned int line_count, len = 20;
 	char **tokz;
 
 	line_count = 0;
@@ -27,7 +27,7 @@ void parse_file(FILE *stream)
 			}
 			else
 			{
-				opcode_delegator(tokz);
+				opcode_delegator(tokz, line_count);
 				free_vec(tokz);
 			}
 		}

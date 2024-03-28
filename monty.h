@@ -38,8 +38,14 @@ typedef struct instruction_s
 
 int validate_command(char *opcode);
 char **tokenizer(char *line);
-void opcode_delegator(char **tokz);
+void opcode_delegator(char **tokz, unsigned int line_count);
+
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+
 
 extern stack_t *head;
+extern instruction_t ins_list[];
 
 #endif

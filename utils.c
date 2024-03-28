@@ -1,10 +1,16 @@
 #include "monty.h"
 
+
+instruction_t ins_list[] = {
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
+}
 /**
-* validate_command - Checks for opcodes in the array
-* @opcode: opcode we want to check
-* Return: 1 if opcode is valid and 0 if not
-*/
+ * validate_command - Checks for opcodes in the array
+ * @opcode: opcode we want to check
+ * Return: 1 if opcode is valid and 0 if not
+ */
 int validate_command(char *opcode)
 {
 	char *allopcodes[] = {"push", "pall", "pint", "pop", "swap",
@@ -46,7 +52,7 @@ char **tokenizer(char *line)
 	return (tokenz);
 }
 
-void opcode_delegator(char **tokz)
+void opcode_delegator(char **tokz, unsigned int line_count)
 {
 	int i;
 	stack_t *new_node = NULL;
@@ -58,8 +64,14 @@ void opcode_delegator(char **tokz)
 		{
 
 		}
-		new_node->n = tokz[i];
+		new_node->n = atoi(tokz[i]);
 		new_node->next = NULL;
 		new_node->prev = NULL;
+	}
+	while (ins_list[i] != NULL)
+	{
+		if ((strcmp((ins_list[i])->opcode, tokz[0])) == 0)
+			(ins_list[i])->f(&new_node, line_count);
+		i++;
 	}
 }
