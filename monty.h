@@ -34,4 +34,12 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+
+
+int validate_command(char *opcode);
+char **tokenizer(char *line);
+void opcode_delegator(char **tokz);
+
+extern stack_t *head;
+
 #endif
