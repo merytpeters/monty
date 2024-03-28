@@ -5,5 +5,5 @@
  */
 void validate_command(char *allopcodes[])
 {
-	allOpcodes[] = {push, pall, pint, pop, swap, add, nop, sub, div, mul, mod, pchar, pstr, rotl, rotr, stack, queue};
+	allopcodes[] = {push, pall, pint, pop, swap, add, nop, sub, div, mul, mod, pchar, pstr, rotl, rotr, stack, queue};
 }
