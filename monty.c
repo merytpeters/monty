@@ -36,7 +36,6 @@ void parse_file(FILE *stream)
 			}
 		}
 	} while (line != NULL);
-	fprintf(stdout, "Done reading file");
 	free(line);
 }
 
@@ -61,7 +60,6 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	printf("file opened successfully!\n");
 	parse_file(my_file);
 	fclose(my_file);
 	return (0);
