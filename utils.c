@@ -63,10 +63,8 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 	stack_t *new_node = NULL;
 	instruction_t ins_list[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
-/*			{"add", add},
-			{"nop", nop},
-			{"sub", sub},
-			{"div", divv},
+		{"add", add}, {"nop", nop}, {"sub", sub},
+/*			{"div", divv},
 			{"mul", mul},
 			{"mod", mod},
 			{"pchar", pchar},
@@ -90,7 +88,7 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		new_node->prev = NULL;
 	}
 	i = 0;
-	while (i < 5)
+	while (i < 8)
 	{
 		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
 		{
