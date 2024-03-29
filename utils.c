@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 instruction_t ins_list[] = {
 	{"push", push},
 	{"pall", pall},
@@ -28,6 +27,11 @@ int validate_command(char *opcode)
 	return (0);
 }
 
+/**
+ * tokenizer - Tokenizes a string into an array of strings
+ * @line: Input string to tokenize
+ * Return: Array of tokens
+ */
 char **tokenizer(char *line)
 {
 	char **tokenz;
@@ -46,13 +50,18 @@ char **tokenizer(char *line)
 		tok = strtok(str, " ");
 		if (tok == NULL)
 			break;
-		tokenz[i] = malloc(sizeof(char) * (strlen(tok) + 1));;
+		tokenz[i] = malloc(sizeof(char) * (strlen(tok) + 1));
 		strcpy(tokenz[i], tok);
 	}
 	tokenz[i] = NULL;
 	return (tokenz);
 }
 
+/**
+ * opcode_delegator - Delegates the execution of an opcode to its function
+ * @tokz: Array of tokens containing the opcode
+ * @line_count: Line number in the input file
+ */
 void opcode_delegator(char **tokz, unsigned int line_count)
 {
 	int i;
@@ -80,11 +89,9 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 	}
 }
 /**
- *  * free_vec - A function that takes in an array of strings and frees them
- *   *
- *    * @vec: The array of strings to be freed
- *     */
-
+ * free_vec - A function that takes in an array of strings and frees them
+ * @vec: The array of strings to be freed
+ */
 void free_vec(char **vec)
 {
 	int i = 0;
