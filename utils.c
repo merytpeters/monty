@@ -5,6 +5,7 @@ instruction_t ins_list[] = {
 	{"push", push},
 	{"pall", pall},
 };
+stack_t *head = NULL;
 
 /**
  * validate_command - Checks for opcodes in the array

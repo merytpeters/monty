@@ -10,7 +10,7 @@ void push(stack_t **stack, unsigned int line_count)
 	stack_t *moving_pointer;
 	(void)line_count;
 
-	if (head == NULL)
+	if (!head)
 	{
 		head = *stack;
 		return;
