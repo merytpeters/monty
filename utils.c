@@ -9,7 +9,7 @@ instruction_t ins_list[] = {
 	{"add", add},
 	{"nop", nop},
 	{"sub", sub},
-	{"div", div},
+	{"div", divv},
 	{"mul", mul},
 	{"mod", mod},
 	{"pchar", pchar},
