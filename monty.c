@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 	if (my_file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		perror("fopen");
 		exit(EXIT_FAILURE);
 	}
 	parse_file(my_file);
