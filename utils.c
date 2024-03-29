@@ -4,8 +4,8 @@
 instruction_t ins_list[] = {
 	{"push", push},
 	{"pall", pall},
-	{"pint", pint},
 };
+
 /**
  * validate_command - Checks for opcodes in the array
  * @opcode: opcode we want to check
@@ -77,4 +77,18 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		}
 		i++;
 	}
+}
+/**
+ *  * free_vec - A function that takes in an array of strings and frees them
+ *   *
+ *    * @vec: The array of strings to be freed
+ *     */
+
+void free_vec(char **vec)
+{
+	int i = 0;
+
+	while (vec[i] != NULL)
+		free(vec[i++]);
+	free(vec);
 }

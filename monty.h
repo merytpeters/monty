@@ -43,6 +43,7 @@ void opcode_delegator(char **tokz, unsigned int line_count);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+void free_vec(char **sttarr);
 
 
 extern stack_t *head;
