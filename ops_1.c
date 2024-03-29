@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * push - push opcode function
+ * @stack: The stack
+ * @line_count: number of elements in the stack
+ */
 void push(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
@@ -15,9 +20,13 @@ void push(stack_t **stack, unsigned int line_count)
 		moving_pointer = moving_pointer->next;
 	(*stack)->prev = moving_pointer;
 	moving_pointer->next = (*stack);
-	return;
 }
 
+/**
+ * pall - print all opcode function
+ * @stack: The stack
+ * @line_count: Number of elements in the stack
+ */
 void pall(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
@@ -32,5 +41,4 @@ void pall(stack_t **stack, unsigned int line_count)
 		fprintf(stdout, "%d\n", moving_pointer->n);
 		moving_pointer = moving_pointer->prev;
 	}
-	return;
 }

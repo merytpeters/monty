@@ -1,5 +1,9 @@
 #include "monty.h"
 
+/**
+ * parse_file - parses through files
+ * @stream: File
+ */
 void parse_file(FILE *stream)
 {
 	char *line;
@@ -36,6 +40,12 @@ void parse_file(FILE *stream)
 	free(line);
 }
 
+/**
+ * main - checks the number of arguments
+ * @argc: Number of arguments
+ * @argv: argument vectors
+ * Return: 0 on Success
+ */
 int main(int argc, char **argv)
 {
 	FILE *my_file;
