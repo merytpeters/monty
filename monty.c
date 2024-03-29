@@ -11,8 +11,8 @@ void parse_file(FILE *stream)
 	char **tokz;
 
 	line_count = 0;
-	line = malloc(sizeof(char) * 20);
 	do {
+		line = malloc(sizeof(char) * 20);
 		line = fgets(line, len, stream);
 		if (line == NULL)
 		{
@@ -28,12 +28,13 @@ void parse_file(FILE *stream)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_count, tokz[0]);
 				free_vec(tokz);
+				free(line);
 				exit(EXIT_FAILURE);
 			}
 			else
 			{
 				opcode_delegator(tokz, line_count);
-				free_vec(tokz);
+				free(line);
 			}
 		}
 	} while (line != NULL);
