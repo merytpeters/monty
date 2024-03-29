@@ -36,7 +36,7 @@ void pall(stack_t **stack, unsigned int line_count)
 	moving_pointer = head;
 	while (moving_pointer->next != NULL)
 		moving_pointer = moving_pointer->next;
-	while (moving_pointer->prev != NULL)
+	while (moving_pointer != NULL)
 	{
 		fprintf(stdout, "%d\n", moving_pointer->n);
 		moving_pointer = moving_pointer->prev;
