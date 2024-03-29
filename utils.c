@@ -1,24 +1,5 @@
 #include "monty.h"
 
-instruction_t ins_list[] = {
-	{"push", push},
-	{"pall", pall},
-	{"pint", pint},
-	{"pop", pop},
-	{"swap", swap},
-	{"add", add},
-	{"nop", nop},
-	{"sub", sub},
-	{"div", divv},
-	{"mul", mul},
-	{"mod", mod},
-	{"pchar", pchar},
-	{"pstr", pstr},
-	{"rotl", rotl},
-	{"rotr", rotr},
-	{"stack", stack},
-	{"queue", queue}
-};
 stack_t *head = NULL;
 
 /**
@@ -81,39 +62,58 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 {
 	int i;
 	stack_t *new_node = NULL;
+	instruction_t ins_list[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+	/*	{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"sub", sub},
+		{"div", divv},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
+		{"stack", stack},
+		{"queue", queue}*/
+	};
 
-	if (tokz[1] != NULL)
-	{
-		new_node = malloc(sizeof(stack_t));
-		if (new_node == NULL)
+		if (tokz[1] != NULL)
 		{
+			new_node = malloc(sizeof(stack_t));
+			if (new_node == NULL)
+			{
 
+			}
+			new_node->n = atoi(tokz[1]);
+			new_node->next = NULL;
+			new_node->prev = NULL;
 		}
-		new_node->n = atoi(tokz[1]);
-		new_node->next = NULL;
-		new_node->prev = NULL;
-	}
-	i = 0;
-	while (i < 4)
-	{
-		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
+		i = 0;
+		while (i < 4)
 		{
-			free_vec(tokz);
-			(ins_list[i]).f(&new_node, line_count);
-			break;
+			if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
+			{
+				free_vec(tokz);
+				(ins_list[i]).f(&new_node, line_count);
+				break;
+			}
+			i++;
 		}
-		i++;
 	}
-}
-/**
- * free_vec - A function that takes in an array of strings and frees them
- * @vec: The array of strings to be freed
- */
-void free_vec(char **vec)
-{
-	int i = 0;
+	/**
+	 * free_vec - A function that takes in an array of strings and frees them
+	 * @vec: The array of strings to be freed
+	 */
+	void free_vec(char **vec)
+	{
+		int i = 0;
 
-	while (vec[i] != NULL)
-		free(vec[i++]);
-	free(vec);
-}
+		while (vec[i] != NULL)
+			free(vec[i++]);
+		free(vec);
+	}
