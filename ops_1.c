@@ -10,7 +10,6 @@ void push(stack_t **stack, unsigned int line_count)
 	stack_t *moving_pointer;
 	(void)line_count;
 
-	printf("pushed\n");
 	if (!head)
 	{
 		head = *stack;
@@ -35,7 +34,6 @@ void pall(stack_t **stack, unsigned int line_count)
 	(void)stack;
 
 	moving_pointer = head;
-	printf("palled\n");
 	while (moving_pointer->next != NULL)
 		moving_pointer = moving_pointer->next;
 	while (moving_pointer->prev != NULL)

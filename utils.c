@@ -47,7 +47,7 @@ char **tokenizer(char *line)
 	}
 	for (i = 0, str = line; i < 2 ; i++, str = NULL)
 	{
-		tok = strtok(str, " ");
+		tok = strtok(str, " \n");
 		if (tok == NULL)
 			break;
 		tokenz[i] = malloc(sizeof(char) * (strlen(tok) + 1));
@@ -78,6 +78,7 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		new_node->next = NULL;
 		new_node->prev = NULL;
 	}
+	i = 0;
 	while (i < 4)
 	{
 		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)

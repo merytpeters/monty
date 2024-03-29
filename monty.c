@@ -27,6 +27,7 @@ void parse_file(FILE *stream)
 			if (!validate_command(tokz[0]))
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_count, tokz[0]);
+				free_vec(tokz);
 				exit(EXIT_FAILURE);
 			}
 			else
