@@ -5,7 +5,7 @@ instruction_t ins_list[] = {
 	{"push", push},
 	{"pall", pall},
 	{"pint", pint},
-}
+};
 /**
  * validate_command - Checks for opcodes in the array
  * @opcode: opcode we want to check
@@ -64,14 +64,17 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		{
 
 		}
-		new_node->n = atoi(tokz[i]);
+		new_node->n = atoi(tokz[1]);
 		new_node->next = NULL;
 		new_node->prev = NULL;
 	}
-	while (ins_list[i] != NULL)
+	while (i < 4)
 	{
-		if ((strcmp((ins_list[i])->opcode, tokz[0])) == 0)
-			(ins_list[i])->f(&new_node, line_count);
+		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
+		{
+			(ins_list[i]).f(&new_node, line_count);
+			break;
+		}
 		i++;
 	}
 }
