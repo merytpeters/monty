@@ -57,7 +57,7 @@ void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void stack(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
-extern stack_t *head;
 extern instruction_t ins_list[];
 
+extern stack_t *head;
 #endif
