@@ -93,7 +93,6 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 	{
 		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
 		{
-			free_vec(tokz);
 			(ins_list[i]).f(&new_node, line_count);
 			break;
 		}
