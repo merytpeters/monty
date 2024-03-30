@@ -102,15 +102,18 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 	}
 }
 /**
- * free_vec - A function that takes in an array of strings
+ * free_stack - A function that takes a doubly linked list
  * and frees them
- * @vec: The array of strings to be freed
+ * @stack: The list we want  to free
  */
-void free_vec(char **vec)
+void free_stack(stack_t *stack)
 {
-	int i = 0;
+	stack_t *next_stack;
 
-	while (vec[i] != NULL)
-		free(vec[i++]);
-	free(vec);
+	while (stack != NULL)
+	{
+		next_stack = stack->next;
+		free(stack);
+		stack = next_stack;
+	}
 }
