@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * add - add opcode function
+ * @stack: The stack
+ * @line_count: The number of elements in the stack
+ */
 void add(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
@@ -23,6 +28,11 @@ void add(stack_t **stack, unsigned int line_count)
 	pop(stack, line_count);
 }
 
+/**
+ * nop - nop opcode function
+ * @stack: The stack
+ * @line_count: Element number
+ */
 void nop(stack_t **stack, unsigned int line_count)
 {
 	(void)stack;
@@ -30,6 +40,11 @@ void nop(stack_t **stack, unsigned int line_count)
 	return;
 }
 
+/**
+ * sub - Sub opcode
+ * @stack: The stack
+ * @line_count: The number of elements in the stack
+ */
 void sub(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
