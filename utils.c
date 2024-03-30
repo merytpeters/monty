@@ -64,15 +64,17 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 	instruction_t ins_list[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
 		{"add", add}, {"nop", nop}, {"sub", sub},
-/*			{"div", divv},
-			{"mul", mul},
-			{"mod", mod},
-			{"pchar", pchar},
-			{"pstr", pstr},
-			{"rotl", rotl},
-			{"rotr", rotr},
-			{"stack", stack},
-			{"queue", queue}*/
+			/**
+			* {"div", divv},
+			* {"mul", mul},
+			* {"mod", mod},
+			* {"pchar", pchar},
+			* {"pstr", pstr},
+			* {"rotl", rotl},
+			* {"rotr", rotr},
+			* {"stack", stack},
+			* {"queue", queue}
+			*/
 	};
 
 	if (tokz[1] != NULL)
