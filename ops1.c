@@ -17,6 +17,8 @@ void push(stack_t **stack, unsigned int line_count)
 	if (stack == NULL)
 	{
 		printf("L%d: usage: push integer\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	moving_pointer = head;
@@ -61,6 +63,8 @@ void pint(stack_t **stack, unsigned int line_count)
 	if (head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -84,6 +88,8 @@ void pop(stack_t **stack, unsigned int line_count)
 	if (head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	moving_pointer = head;
@@ -123,6 +129,8 @@ void swap(stack_t **stack, unsigned int line_count)
 	if (stack_count < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	temp = moving_pointer->n;

@@ -89,7 +89,7 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		new_node->prev = NULL;
 	}
 	i = 0;
-	while (i < 8)
+	while (i < 10)
 	{
 		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
 		{

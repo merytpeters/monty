@@ -60,4 +60,5 @@ void queue(stack_t **stack, unsigned int line_number);
 extern instruction_t ins_list[];
 
 extern stack_t *head;
+extern char *line;
 #endif

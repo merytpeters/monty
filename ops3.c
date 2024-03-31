@@ -21,11 +21,15 @@ void divv(stack_t **stack, unsigned int line_count)
 	if (stack_count < 2)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	if (moving_pointer->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	quotient = (moving_pointer->prev)->n / moving_pointer->n;
@@ -54,6 +58,8 @@ void mul(stack_t **stack, unsigned int line_count)
 	if (stack_count < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_count);
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	multiply = (moving_pointer->prev)->n * moving_pointer->n;

@@ -1,12 +1,12 @@
 #include "monty.h"
 
+char *line;
 /**
  * parse_file - parses through files
  * @stream: File
  */
 void parse_file(FILE *stream)
 {
-	char *line;
 	unsigned int line_count, len = 20;
 	char **tokz;
 
@@ -27,6 +27,7 @@ void parse_file(FILE *stream)
 			if (!validate_command(tokz[0]))
 			{
 				fprintf(stderr, "L%d: unknown instruction %s", line_count, tokz[0]);
+				free_stack(head);
 				free(line);
 				exit(EXIT_FAILURE);
 			}
@@ -37,6 +38,7 @@ void parse_file(FILE *stream)
 			}
 		}
 	} while (line != NULL);
+	free_stack(head);
 	free(line);
 }
 
