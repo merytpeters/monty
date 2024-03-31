@@ -1,6 +1,7 @@
 #include "monty.h"
 
-char *line;
+char *line = NULL;
+char **tokz = NULL;
 /**
  * parse_file - parses through files
  * @stream: File
@@ -8,10 +9,10 @@ char *line;
 void parse_file(FILE *stream)
 {
 	unsigned int line_count, len = 20;
-	char **tokz;
 
 	line_count = 0;
 	do {
+		free(line);
 		line = malloc(sizeof(char) * 20);
 		line = fgets(line, len, stream);
 		if (line == NULL)
@@ -28,13 +29,13 @@ void parse_file(FILE *stream)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s", line_count, tokz[0]);
 				free_stack(head);
+				free_vec(tokz);
 				free(line);
 				exit(EXIT_FAILURE);
 			}
 			else
 			{
 				opcode_delegator(tokz, line_count);
-				free(line);
 			}
 		}
 	} while (line != NULL);
