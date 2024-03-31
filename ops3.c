@@ -18,7 +18,7 @@ void divv(stack_t **stack, unsigned int line_count)
 		stack_count++;
 		moving_pointer = moving_pointer->next;
 	}
-	if (stack_count < 2)
+	if (stack_count < 1)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_count);
 		free(line);
@@ -55,7 +55,7 @@ void mul(stack_t **stack, unsigned int line_count)
 		stack_count++;
 		moving_pointer = moving_pointer->next;
 	}
-	if (stack_count < 2)
+	if (stack_count < 1)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_count);
 		free(line);
