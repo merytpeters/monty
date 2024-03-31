@@ -35,8 +35,8 @@ void pall(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
 	(void) line_count;
-	(void)stack;
 
+	free(*stack);
 	moving_pointer = head;
 	if (head == NULL)
 		return;
@@ -56,8 +56,8 @@ void pall(stack_t **stack, unsigned int line_count)
 void pint(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
-	(void)stack;
 
+	free(*stack);
 	if (head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_count);
@@ -79,8 +79,8 @@ void pint(stack_t **stack, unsigned int line_count)
 void pop(stack_t **stack, unsigned int line_count)
 {
 	stack_t *moving_pointer;
-	(void)stack;
 
+	free(*stack);
 	if (head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_count);
@@ -112,7 +112,7 @@ void swap(stack_t **stack, unsigned int line_count)
 	int temp;
 	int stack_count;
 
-	(void)stack;
+	free(*stack);
 	stack_count = 0;
 	moving_pointer = head;
 	while (moving_pointer != NULL && moving_pointer->next != NULL)

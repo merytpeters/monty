@@ -38,6 +38,8 @@ char **tokenizer(char *line)
 	if (tokenz == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free(line);
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0, str = line; i < 2 ; i++, str = NULL)
@@ -59,37 +61,42 @@ char **tokenizer(char *line)
  */
 void opcode_delegator(char **tokz, unsigned int line_count)
 {
-	int i;
+	int i, n;
 	stack_t *new_node = NULL;
 	instruction_t ins_list[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
 		{"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", divv}, {"mul", mul},
-			/**
-			* {"mod", mod},
-			* {"pchar", pchar},
-			* {"pstr", pstr},
-			* {"rotl", rotl},
-			* {"rotr", rotr},
-			* {"stack", stack},
-			* {"queue", queue}
-			*/
+		{"div", divv}, {"mul", mul}, {"mod", mod},
+		/**
+		 * {"pchar", pchar},
+		 * {"pstr", pstr},
+		 * {"rotl", rotl},
+		 * {"rotr", rotr},
+		 * {"stack", stack},
+		 * {"queue", queue}
+		 */
 	};
 
 	if (tokz[1] != NULL)
 	{
-		new_node = malloc(sizeof(stack_t));
-		if (new_node == NULL)
+		n = atoi(tokz[1]);
+		if ((n == 0 && *tokz[1] == '0') || n != 0)
 		{
-			printf("Error: malloc failed\n");
-			exit(EXIT_FAILURE);
+			new_node = malloc(sizeof(stack_t));
+			if (new_node == NULL)
+			{
+				printf("Error: malloc failed\n");
+				free_vec(tokz);
+				free_stack(head);
+				exit(EXIT_FAILURE);
+			}
+			new_node->n = n;
+			new_node->next = NULL;
+			new_node->prev = NULL;
 		}
-		new_node->n = atoi(tokz[1]);
-		new_node->next = NULL;
-		new_node->prev = NULL;
 	}
 	i = 0;
-	while (i < 10)
+	while (i < 11)
 	{
 		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
 		{
@@ -99,38 +106,4 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		}
 		i++;
 	}
-}
-/**
- * free_stack - A function that takes a doubly linked list
- * and frees them
- * @stack: The list we want  to free
- */
-void free_stack(stack_t *stack)
-{
-	stack_t *next_stack;
-
-	while (stack != NULL)
-	{
-		next_stack = stack->next;
-		free(stack);
-		stack = next_stack;
-	}
-}
-
-/**
- * free_vec - A function that takes an array of strings
- * and frees them
- * @vec: the array of strings
- */
-void free_vec(char **vec)
-{
-	int i;
-
-	i = 0;
-	while (vec[i] != NULL)
-	{
-		free(vec[i]);
-		i++;
-	}
-	free(vec);
 }

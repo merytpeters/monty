@@ -11,6 +11,7 @@ void add(stack_t **stack, unsigned int line_count)
 	int stack_count;
 	int sum;
 
+	free(*stack);
 	moving_pointer = head;
 	stack_count = 0;
 	if (head != NULL)
@@ -37,7 +38,7 @@ void add(stack_t **stack, unsigned int line_count)
  */
 void nop(stack_t **stack, unsigned int line_count)
 {
-	(void)stack;
+	free(*stack);
 	(void)line_count;
 }
 
@@ -52,6 +53,7 @@ void sub(stack_t **stack, unsigned int line_count)
 	int stack_count;
 	int diff;
 
+	free(*stack);
 	moving_pointer = head;
 	stack_count = 0;
 	if (head != NULL)
