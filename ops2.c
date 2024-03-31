@@ -13,16 +13,16 @@ void add(stack_t **stack, unsigned int line_count)
 
 	moving_pointer = head;
 	stack_count = 0;
+	if (head != NULL)
+		stack_count = 1;
 	while (head != NULL && moving_pointer->next != NULL)
 	{
 		stack_count++;
 		moving_pointer = moving_pointer->next;
 	}
-	if (stack_count < 1)
+	if (stack_count < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_count);
-		free(line);
-		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	sum = moving_pointer->n + (moving_pointer->prev)->n;
@@ -54,16 +54,16 @@ void sub(stack_t **stack, unsigned int line_count)
 
 	moving_pointer = head;
 	stack_count = 0;
+	if (head != NULL)
+		stack_count = 1;
 	while (head != NULL && moving_pointer->next != NULL)
 	{
 		stack_count++;
 		moving_pointer = moving_pointer->next;
 	}
-	if (stack_count < 1)
+	if (stack_count < 2)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_count);
-		free(line);
-		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 	diff = (moving_pointer->prev)->n - moving_pointer->n;
