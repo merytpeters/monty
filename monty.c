@@ -6,9 +6,9 @@
  */
 void parse_file(FILE *stream)
 {
-	unsigned int line_count, len = 20;
+	unsigned int line_count, len = 100;
 	char **tokz;
-	char line[20];
+	char line[100];
 
 	line_count = 0;
 	while (fgets(line, len, stream) != NULL)
