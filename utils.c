@@ -38,7 +38,6 @@ char **tokenizer(char *line)
 	if (tokenz == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free(line);
 		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
@@ -66,12 +65,9 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 	instruction_t ins_list[] = {{"push", push}, {"pall", pall},
 		{"pint", pint}, {"pop", pop}, {"swap", swap},
 		{"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", divv}, {"mul", mul}, {"mod", mod},
+		{"div", divv}, {"mul", mul}, {"mod", mod}, {"pchar", pchar},
+		{"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr},
 		/**
-		 * {"pchar", pchar},
-		 * {"pstr", pstr},
-		 * {"rotl", rotl},
-		 * {"rotr", rotr},
 		 * {"stack", stack},
 		 * {"queue", queue}
 		 */
@@ -96,7 +92,7 @@ void opcode_delegator(char **tokz, unsigned int line_count)
 		}
 	}
 	i = 0;
-	while (i < 11)
+	while (i < 15)
 	{
 		if ((strcmp((ins_list[i]).opcode, tokz[0])) == 0)
 		{
