@@ -114,6 +114,8 @@ void swap(stack_t **stack, unsigned int line_count)
 
 	free(*stack);
 	stack_count = 0;
+	if (head != NULL)
+		stack_count = 1;
 	moving_pointer = head;
 	while (moving_pointer != NULL && moving_pointer->next != NULL)
 	{
