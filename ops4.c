@@ -13,7 +13,7 @@ void pchar(stack_t **stack, unsigned int line_count)
 
 	free(*stack);
 	moving_pointer = head;
-	while (moving_pointer->next != NULL)
+	while (moving_pointer && moving_pointer->next != NULL)
 		moving_pointer = moving_pointer->next;
 	if (moving_pointer != NULL)
 	{
