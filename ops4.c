@@ -50,7 +50,7 @@ void pstr(stack_t **stack, unsigned int line_count)
 	(void)line_count;
 	free(*stack);
 	moving_pointer = head;
-	while (moving_pointer->next != NULL)
+	while (moving_pointer && moving_pointer->next != NULL)
 		moving_pointer = moving_pointer->next;
 	if (moving_pointer != NULL)
 	{
@@ -82,7 +82,7 @@ void rotl(stack_t **stack, unsigned int line_count)
 	(void)line_count;
 	free(*stack);
 	last_pointer = head;
-	while (last_pointer->next != NULL)
+	while (last_pointer && last_pointer->next != NULL)
 		last_pointer = last_pointer->next;
 	if (last_pointer != NULL)
 	{
@@ -107,7 +107,7 @@ void rotr(stack_t **stack, unsigned int line_count)
 	(void)line_count;
 	free(*stack);
 	last_pointer = head;
-	while (last_pointer->next != NULL)
+	while (last_pointer && last_pointer->next != NULL)
 		last_pointer = last_pointer->next;
 	if (last_pointer != NULL)
 	{
